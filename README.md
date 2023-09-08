@@ -1,1 +1,1 @@
-# math-sprint-game
+# MathSprintGame

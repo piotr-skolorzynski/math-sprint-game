@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { DataViewLayoutOptions } from 'primeng/dataview';
 
 @Component({
   selector: 'app-root',

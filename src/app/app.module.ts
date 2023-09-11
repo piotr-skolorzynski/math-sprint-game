@@ -3,16 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './Views/Home/home.component';
-import { GamesComponent } from './Views/Games/games.component';
+import { SplashComponent } from './Pages/Splash/splash.component';
+import { GamesComponent } from './Pages/Games/games.component';
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: SplashComponent },
   { path: 'games/:gameId', component: GamesComponent },
 ];
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, GamesComponent],
+  declarations: [AppComponent, SplashComponent, GamesComponent],
   imports: [BrowserModule, RouterModule.forRoot(appRoutes)],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { RouterModule, Routes } from '@angular/router';
 import { SplashComponent } from './Pages/Splash/splash.component';
 import { GamesComponent } from './Pages/Games/games.component';
 
@@ -13,7 +14,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [AppComponent, SplashComponent, GamesComponent],
-  imports: [BrowserModule, RouterModule.forRoot(appRoutes)],
+  imports: [BrowserModule, CommonModule, RouterModule.forRoot(appRoutes)],
   providers: [],
   bootstrap: [AppComponent],
 })

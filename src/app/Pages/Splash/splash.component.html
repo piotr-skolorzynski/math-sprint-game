@@ -1,20 +1,17 @@
-<div class="font-mono border-2 border-black rounded-sm shadow-2xl">
-  <div class="w-full py-10 flex justify-center items-center bg-sky-500">
-    <p class="capitalize text-white text-6xl font-bold">
-      {{ title }}
-    </p>
-  </div>
-  <div class="h-96 flex flex-col justify-center items-center space-y-6 my-5">
-    <div
-      class="w-5/6 border-2 border-black rounded-md p-3 text-4xl hover:bg-sky-400 hover:cursor-pointer transistion-colors"
-      *ngFor="let game of games"
-    >
-      <p>{{ game.title }}</p>
+<div class="flex flex-col justify-center items-center space-y-6 py-12">
+  <div
+    class="w-5/6 border-2 border-black rounded-md p-3 hover:bg-sky-400 hover:cursor-pointer transistion-colors flex justify-between"
+    *ngFor="let game of games"
+  >
+    <p class="text-4xl">{{ game.title }}</p>
+    <div class="text-center">
+      <p class="capitalize">best score</p>
+      <p class="text-xl">{{ game.bestScore.toFixed(1) }}s</p>
     </div>
   </div>
-  <div class="w-full py-6 flex justify-center items-center bg-black">
-    <button class="text-white bg-green-500 py-4 px-6 rounded-md text-2xl">
-      Start Game
-    </button>
-  </div>
+</div>
+<div class="w-full py-6 flex justify-center items-center bg-black">
+  <button class="text-white bg-green-500 py-3 px-6 rounded-md text-3xl w-5/6">
+    Start Round
+  </button>
 </div>

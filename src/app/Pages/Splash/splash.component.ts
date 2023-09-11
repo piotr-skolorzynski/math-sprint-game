@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-interface Game {
-  id: number;
+export interface Game {
+  id: string;
   title: string;
+  bestScore: number;
 }
 
 @Component({
@@ -12,23 +13,26 @@ interface Game {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SplashComponent {
-  title = 'Math Sprint Game';
   games: Game[] = [
     {
-      id: 1,
+      id: '1',
       title: '10 Questions',
+      bestScore: 0.0,
     },
     {
-      id: 2,
+      id: '2',
       title: '25 Questions',
+      bestScore: 0.0,
     },
     {
-      id: 3,
+      id: '3',
       title: '50 Questions',
+      bestScore: 0.0,
     },
     {
-      id: 4,
+      id: '4',
       title: '99 Questions',
+      bestScore: 0.0,
     },
   ];
 }

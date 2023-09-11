@@ -1,3 +1,11 @@
 <div class="max-w-screen-sm mx-auto mt-10">
-  <router-outlet></router-outlet>
+  <div class="font-mono border-2 border-black rounded-sm shadow-2xl">
+    <div class="w-full py-10 flex justify-center items-center bg-sky-500">
+      <p class="capitalize text-white text-6xl font-bold">
+        {{ title }}
+      </p>
+    </div>
+
+    <router-outlet></router-outlet>
+  </div>
 </div>

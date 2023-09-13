@@ -1,11 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
-export interface Game {
-  id: string;
-  title: string;
-  bestScore: number;
-}
+import { Game } from 'src/app/models/game.model';
 
 @Component({
   selector: 'app-splash',

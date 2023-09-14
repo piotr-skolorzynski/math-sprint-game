@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Game } from 'src/app/models/game.model';
+import { GamesService } from 'src/app/services/games.service';
 
 @Component({
   selector: 'app-splash',
@@ -8,33 +9,15 @@ import { Game } from 'src/app/models/game.model';
   styleUrls: ['./splash.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SplashComponent {
-  games: Game[] = [
-    {
-      id: '1',
-      title: '10 Questions',
-      bestScore: 0.0,
-    },
-    {
-      id: '2',
-      title: '25 Questions',
-      bestScore: 0.0,
-    },
-    {
-      id: '3',
-      title: '50 Questions',
-      bestScore: 0.0,
-    },
-    {
-      id: '4',
-      title: '99 Questions',
-      bestScore: 0.0,
-    },
-  ];
-
+export class SplashComponent implements OnInit {
+  games = [] as Game[];
   selectedGame = {} as Game;
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private router: Router, private gameService: GamesService) {}
+
+  ngOnInit(): void {
+    this.games = this.gameService.getGames();
+  }
 
   onGameSelect(game: Game) {
     this.selectedGame = { ...game };

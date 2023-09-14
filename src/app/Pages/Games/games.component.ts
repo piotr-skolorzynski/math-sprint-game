@@ -1,5 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Equation } from 'src/app/models/game.model';
+import { EquationService } from 'src/app/services/equations.service';
+import { GamesService } from 'src/app/services/games.service';
 
 @Component({
   selector: 'app-games',
@@ -7,18 +10,27 @@ import { Equation } from 'src/app/models/game.model';
   styleUrls: ['./games.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GamesComponent {
-  equations: Equation[] = [
-    {id: '1', value: '3 x 3 = 30', isTrue: true},
-    {id: '2', value: '3 x 3 = 30', isTrue: true},
-    {id: '3', value: '3 x 3 = 30', isTrue: true},
-    {id: '4', value: '3 x 3 = 30', isTrue: true},
-    {id: '5', value: '3 x 3 = 30', isTrue: true},
-  ]
+export class GamesComponent implements OnInit {
+  equations = [] as Equation[];
+  selectedEquation = {} as Equation;
 
-  selectedEquation: Equation = {
-    id: '1',
-    value: '3 x 3 = 30',
-    isTrue: true
+  constructor(
+    private route: ActivatedRoute,
+    private gameService: GamesService,
+    private questionsService: EquationService
+  ) {}
+
+  ngOnInit(): void {
+    const gameId = this.route.snapshot.params['gameId'];
+    const games = this.gameService.getGames();
+    const selectedGame = games.find((game) => game.id === gameId);
+
+    if (selectedGame) {
+      this.equations = this.questionsService.createEquastions(
+        selectedGame.questionNumber
+      );
+      console.log(this.equations);
+      this.selectedEquation = this.equations[0];
+    }
   }
 }

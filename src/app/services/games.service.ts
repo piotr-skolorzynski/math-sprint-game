@@ -32,7 +32,25 @@ export class GamesService {
     },
   ];
 
+  private timePlayed = 0;
+
+  private interval: number = <any>setInterval(() => {});
+
+  startTimer() {
+    this.interval = window.setInterval(() => this.addTime(), 100);
+  }
+
+  stopTimer(): number {
+    clearInterval(this.interval);
+
+    return Number(this.timePlayed.toFixed(2));
+  }
+
   getGames(): Game[] {
     return this.games;
+  }
+
+  private addTime() {
+    this.timePlayed += 0.1;
   }
 }

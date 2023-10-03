@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { SplashComponent } from './pages/splash/splash.component';
 import { GamesComponent } from './pages/games/games.component';
+import { CountdownComponent } from './pages/games/components/countdown/countdown.component';
 
 const appRoutes: Routes = [
   { path: '', component: SplashComponent },
@@ -13,7 +14,12 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, SplashComponent, GamesComponent],
+  declarations: [
+    AppComponent,
+    SplashComponent,
+    GamesComponent,
+    CountdownComponent,
+  ],
   imports: [BrowserModule, CommonModule, RouterModule.forRoot(appRoutes)],
   providers: [],
   bootstrap: [AppComponent],

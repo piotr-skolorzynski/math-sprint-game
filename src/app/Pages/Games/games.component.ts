@@ -14,6 +14,7 @@ export class GamesComponent implements OnInit {
   private equations = [] as Equation[][];
   private selectedEquationIndex = 0;
   private answers = [] as boolean[];
+  isGameStarting = true;
   selectedEquation = {} as Equation;
   selectedEquationArray = [] as Equation[];
   selectedEquationArrayIndex: number = 0;
@@ -25,19 +26,12 @@ export class GamesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const gameId = this.route.snapshot.params['gameId'];
-    const games = this.gameService.getGames();
-    const selectedGame = games.find((game) => game.id === gameId);
+    this.startGame();
+  }
 
-    if (selectedGame) {
-      const equations = this.questionsService.createEquastions(
-        selectedGame.questionNumber
-      );
-      console.log(equations);
-      this.equations = [...equations];
-      this.selectedEquationArray = equations[0];
-      this.selectedEquation = equations[0][0];
-    }
+  onClose(close: boolean) {
+    this.isGameStarting = !close;
+    this.gameService.startTimer();
   }
 
   onWrongCheck() {
@@ -60,12 +54,26 @@ export class GamesComponent implements OnInit {
     this.changeIndex();
   }
 
+  private startGame() {
+    const gameId = this.route.snapshot.params['gameId'];
+    const games = this.gameService.getGames();
+    const selectedGame = games.find((game) => game.id === gameId);
+
+    if (selectedGame) {
+      const equations = this.questionsService.createEquastions(
+        selectedGame.questionNumber
+      );
+      this.equations = [...equations];
+      this.selectedEquationArray = equations[0];
+      this.selectedEquation = equations[0][0];
+    }
+  }
+
   private changeIndex() {
     if (
       this.selectedEquationIndex === this.selectedEquationArray.length - 1 &&
       this.selectedEquationArrayIndex === this.equations.length - 1
     ) {
-      this.resetGame();
       this.sumupGame();
 
       return;
@@ -94,10 +102,6 @@ export class GamesComponent implements OnInit {
   }
 
   private sumupGame() {
-    console.log('end of game');
-  }
-
-  private resetGame() {
-    console.log('reset');
+    const timeResult = this.gameService.stopTimer();
   }
 }

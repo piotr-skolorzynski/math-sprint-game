@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { SplashComponent } from './Pages/Splash/splash.component';
-import { GamesComponent } from './Pages/Games/games.component';
+import { SplashComponent } from './pages/splash/splash.component';
+import { GamesComponent } from './pages/games/games.component';
 
 const appRoutes: Routes = [
   { path: '', component: SplashComponent },

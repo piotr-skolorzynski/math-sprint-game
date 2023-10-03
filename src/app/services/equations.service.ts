@@ -5,7 +5,7 @@ import { Equation } from '../models/game.model';
   providedIn: 'root',
 })
 export class EquationService {
-  createEquastions(questionsAmount: number): Equation[] {
+  createEquastions(questionsAmount: number): Equation[][] {
     //randomly choose how many correct equastions there should be
     const correctEquastions = this.getRandomInt(questionsAmount);
 
@@ -52,7 +52,29 @@ export class EquationService {
     }
 
     //use Fisher-Yates (aka Knuth) shuffle algorithm to shaffle equations in array
-    return this.shuffleArray(equations);
+    const shuffledEquastions = this.shuffleArray(equations);
+
+    const ArrayOfArrays = this.createArrayOfArrays(shuffledEquastions);
+
+    return ArrayOfArrays;
+  }
+
+  private createArrayOfArrays(array: Equation[]): Equation[][] {
+    const NUMBER_OF_QUESTIONS = 5;
+    const numberOfArrays = Math.ceil(array.length / NUMBER_OF_QUESTIONS);
+
+    const arrayOfArrays = [] as Equation[][];
+
+    for (let i = 0; i < numberOfArrays; i++) {
+      const partialArray = array.slice(
+        i * NUMBER_OF_QUESTIONS,
+        (i + 1) * NUMBER_OF_QUESTIONS
+      );
+
+      arrayOfArrays.push(partialArray);
+    }
+
+    return arrayOfArrays;
   }
 
   private getRandomInt(max: number): number {

@@ -7,10 +7,12 @@ import { AppComponent } from './app.component';
 import { SplashComponent } from './pages/splash/splash.component';
 import { GamesComponent } from './pages/games/games.component';
 import { CountdownComponent } from './pages/games/components/countdown/countdown.component';
+import { ScoreComponent } from './pages/games/components/score/score.component';
 
 const appRoutes: Routes = [
   { path: '', component: SplashComponent },
   { path: 'games/:gameId', component: GamesComponent },
+  { path: 'score', component: ScoreComponent },
 ];
 
 @NgModule({

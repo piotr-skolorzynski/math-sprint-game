@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Equation } from 'src/app/models/game.model';
 import { EquationService } from 'src/app/services/equations.service';
 import { GamesService } from 'src/app/services/games.service';
@@ -21,6 +21,7 @@ export class GamesComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private gameService: GamesService,
     private questionsService: EquationService
   ) {}
@@ -103,5 +104,6 @@ export class GamesComponent implements OnInit {
 
   private sumupGame() {
     const timeResult = this.gameService.stopTimer();
+    this.router.navigate(['/score']);
   }
 }

@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-score',
@@ -7,5 +8,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScoreComponent {
-  onPlayAgain() {}
+  constructor(private router: Router) {}
+
+  onPlayAgain() {
+    this.router.navigate(['/']);
+  }
 }

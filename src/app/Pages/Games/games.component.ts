@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Equation } from 'src/app/models/game.model';
+import { Equation, Game } from 'src/app/models/game.model';
 import { EquationService } from 'src/app/services/equations.service';
 import { GamesService } from 'src/app/services/games.service';
 
@@ -14,6 +14,8 @@ export class GamesComponent implements OnInit {
   private equations = [] as Equation[][];
   private selectedEquationIndex = 0;
   private answers = [] as boolean[];
+  private gameId = '';
+  private selectedGame = {} as Game;
   isGameStarting = true;
   selectedEquation = {} as Equation;
   selectedEquationArray = [] as Equation[];
@@ -56,13 +58,14 @@ export class GamesComponent implements OnInit {
   }
 
   private startGame() {
-    const gameId = this.route.snapshot.params['gameId'];
+    this.gameId = this.route.snapshot.params['gameId'];
     const games = this.gameService.getGames();
-    const selectedGame = games.find((game) => game.id === gameId);
+    const chosenGame = games.find((game) => game.id === this.gameId);
 
-    if (selectedGame) {
+    if (chosenGame) {
+      this.selectedGame = chosenGame;
       const equations = this.questionsService.createEquastions(
-        selectedGame.questionNumber
+        this.selectedGame.questionNumber
       );
       this.equations = [...equations];
       this.selectedEquationArray = equations[0];
@@ -103,7 +106,7 @@ export class GamesComponent implements OnInit {
   }
 
   private sumupGame() {
-    const timeResult = this.gameService.stopTimer();
+    this.gameService.stopTimer(this.gameId, this.answers);
     this.router.navigate(['/score']);
   }
 }

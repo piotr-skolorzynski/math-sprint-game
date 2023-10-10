@@ -10,3 +10,11 @@ export interface Equation {
   value: string;
   isTrue: boolean;
 }
+
+export interface GameResult {
+  timePlayed: number;
+  baseTime: number;
+  hasIncorrectAnswers: boolean;
+  numberOfIncorrectAnswers?: number;
+  hasNewRecord: boolean;
+}

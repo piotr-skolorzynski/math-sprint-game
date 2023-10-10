@@ -4,10 +4,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { SplashComponent } from './pages/splash/splash.component';
-import { GamesComponent } from './pages/games/games.component';
-import { CountdownComponent } from './pages/games/components/countdown/countdown.component';
-import { ScoreComponent } from './pages/games/components/score/score.component';
+import { SplashComponent } from './Pages/Splash/splash.component';
+import { GamesComponent } from './Pages/Games/games.component';
+import { CountdownComponent } from './Pages/Games/components/countdown/countdown.component';
+import { ScoreComponent } from './Pages/Games/components/score/score.component';
 
 const appRoutes: Routes = [
   { path: '', component: SplashComponent },
@@ -21,6 +21,7 @@ const appRoutes: Routes = [
     SplashComponent,
     GamesComponent,
     CountdownComponent,
+    ScoreComponent,
   ],
   imports: [BrowserModule, CommonModule, RouterModule.forRoot(appRoutes)],
   providers: [],

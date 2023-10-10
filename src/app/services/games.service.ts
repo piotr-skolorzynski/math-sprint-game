@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Game } from '../models/game.model';
+import { Game, GameResult } from '../models/game.model';
 
 @Injectable({
   providedIn: 'root',
@@ -10,25 +10,25 @@ export class GamesService {
       id: '1',
       title: '10 Questions',
       questionNumber: 10,
-      bestScore: 0.0,
+      bestScore: 10.0,
     },
     {
       id: '2',
       title: '25 Questions',
       questionNumber: 25,
-      bestScore: 0.0,
+      bestScore: 10.0,
     },
     {
       id: '3',
       title: '50 Questions',
       questionNumber: 50,
-      bestScore: 0.0,
+      bestScore: 10.0,
     },
     {
       id: '4',
       title: '99 Questions',
       questionNumber: 99,
-      bestScore: 0.0,
+      bestScore: 10.0,
     },
   ];
 
@@ -36,18 +36,42 @@ export class GamesService {
 
   private interval: number = <any>setInterval(() => {});
 
+  private gameResult = {} as GameResult;
+
   startTimer() {
     this.interval = window.setInterval(() => this.addTime(), 100);
   }
 
-  stopTimer(): number {
+  stopTimer(gameId: string, answers: boolean[]): void {
     clearInterval(this.interval);
 
-    return Number(this.timePlayed.toFixed(2));
+    this.setGameResult(gameId, answers);
   }
 
   getGames(): Game[] {
     return this.games;
+  }
+
+  getGameResults(): GameResult {
+    return this.gameResult;
+  }
+
+  private setGameResult(gameId: string, answers: boolean[]): void {
+    const hasIncorrectAnswers =
+      answers.filter((answer) => answer === false).length > 0;
+
+    const playedGame = this.games.find((game) => game.id === gameId) as Game;
+
+    const baseTime = playedGame.bestScore;
+
+    const hasNewRecord = this.timePlayed < baseTime;
+
+    this.gameResult = {
+      timePlayed: Number(this.timePlayed.toFixed(2)),
+      baseTime,
+      hasIncorrectAnswers,
+      hasNewRecord,
+    };
   }
 
   private addTime() {

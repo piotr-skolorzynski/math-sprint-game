@@ -12,6 +12,7 @@ import { ScoreModalComponent } from './Pages/Games/components/score-modal/score-
 const appRoutes: Routes = [
   { path: '', component: SplashComponent },
   { path: 'games/:gameId', component: GamesComponent },
+  { path: '**', redirectTo: '/' },
 ];
 
 @NgModule({

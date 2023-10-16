@@ -7,12 +7,11 @@ import { AppComponent } from './app.component';
 import { SplashComponent } from './Pages/Splash/splash.component';
 import { GamesComponent } from './Pages/Games/games.component';
 import { CountdownComponent } from './Pages/Games/components/countdown/countdown.component';
-import { ScoreComponent } from './Pages/Games/components/score/score.component';
+import { ScoreModalComponent } from './Pages/Games/components/score-modal/score-modal.component';
 
 const appRoutes: Routes = [
   { path: '', component: SplashComponent },
   { path: 'games/:gameId', component: GamesComponent },
-  { path: 'score', component: ScoreComponent },
 ];
 
 @NgModule({
@@ -21,7 +20,7 @@ const appRoutes: Routes = [
     SplashComponent,
     GamesComponent,
     CountdownComponent,
-    ScoreComponent,
+    ScoreModalComponent,
   ],
   imports: [BrowserModule, CommonModule, RouterModule.forRoot(appRoutes)],
   providers: [],

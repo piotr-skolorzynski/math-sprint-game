@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Equation, Game } from 'src/app/models/game.model';
 import { EquationService } from 'src/app/services/equations.service';
 import { GamesService } from 'src/app/services/games.service';
@@ -20,10 +20,10 @@ export class GamesComponent implements OnInit {
   selectedEquation = {} as Equation;
   selectedEquationArray = [] as Equation[];
   selectedEquationArrayIndex: number = 0;
+  showScoreModal = false;
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private gameService: GamesService,
     private questionsService: EquationService
   ) {}
@@ -107,6 +107,6 @@ export class GamesComponent implements OnInit {
 
   private sumupGame() {
     this.gameService.stopTimer(this.gameId, this.answers);
-    this.router.navigate(['/score']);
+    this.showScoreModal = true;
   }
 }

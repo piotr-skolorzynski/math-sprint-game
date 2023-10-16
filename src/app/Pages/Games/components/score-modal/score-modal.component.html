@@ -1,0 +1,46 @@
+<div class="fixed top-0 left-0 w-full h-full bg-black opacity-75 z-40"></div>
+<div class="fixed top-20 w-[636px] p-4 bg-white shadow-md z-50">
+  <div class="h-[600px] flex flex-col justify-evenly items-center">
+    <div
+      class="text-red-700 text-3xl font-bold text-center"
+      *ngIf="gameResult.hasIncorrectAnswers"
+    >
+      <p>Sorry! You have incorrect answers!</p>
+      <p>Please try again!</p>
+    </div>
+
+    <div
+      class="text-center"
+      *ngIf="gameResult.hasNewRecord && !gameResult.hasIncorrectAnswers"
+    >
+      <p class="text-green-500 text-3xl mt-3">
+        Congratulations!!! New Record !!!
+      </p>
+      <p class="text-4xl font-bold mt-5">Your Time</p>
+      <p class="text-green-500 text-6xl mt-8 text-center">
+        {{ gameResult.timePlayed }}
+      </p>
+    </div>
+
+    <div *ngIf="!gameResult.hasNewRecord && !gameResult.hasIncorrectAnswers">
+      <p class="text-5xl font-bold mt-3">Your Time</p>
+      <p class="text-green-500 text-8xl mt-3 text-center">
+        {{ gameResult.timePlayed }}
+      </p>
+      <p class="text-3xl font-bold mt-14">
+        Base Time: {{ gameResult.baseTime }}
+      </p>
+      <p class="text-red-700 text-3xl font-bold">
+        Penalty: +
+        {{ (gameResult.timePlayed - gameResult.baseTime).toFixed(2) }}
+      </p>
+    </div>
+
+    <button
+      class="text-white bg-sky-500 py-3 px-6 mt-40 rounded-md text-3xl w-5/6"
+      (click)="onPlayAgain()"
+    >
+      Play again
+    </button>
+  </div>
+</div>

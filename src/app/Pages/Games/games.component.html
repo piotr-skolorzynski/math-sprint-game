@@ -26,3 +26,4 @@
 <ng-template #countdown>
   <app-countdown (close)="onClose($event)"></app-countdown>
 </ng-template>
+<app-score-modal *ngIf="showScoreModal && !isGameStarting"></app-score-modal>

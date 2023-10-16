@@ -10,7 +10,7 @@ export class GamesService {
       id: '1',
       title: '10 Questions',
       questionNumber: 10,
-      bestScore: 10.0,
+      bestScore: 30.0,
     },
     {
       id: '2',
@@ -68,10 +68,12 @@ export class GamesService {
 
     this.gameResult = {
       timePlayed: Number(this.timePlayed.toFixed(2)),
-      baseTime,
+      baseTime: Number(baseTime),
       hasIncorrectAnswers,
       hasNewRecord,
     };
+
+    console.log(this.gameResult);
   }
 
   private addTime() {

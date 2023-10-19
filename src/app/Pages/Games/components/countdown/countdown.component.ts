@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -8,6 +9,8 @@ import {
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
+  standalone: true,
+  imports: [CommonModule],
   selector: 'app-countdown',
   templateUrl: './countdown.component.html',
   styleUrls: ['./countdown.component.css'],

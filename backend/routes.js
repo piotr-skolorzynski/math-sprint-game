@@ -5,4 +5,4 @@ const router = express.Router();
 
 router.get("/games", gamesController.getGames);
 
-exports = router;
+exports.router = router;

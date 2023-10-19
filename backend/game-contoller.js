@@ -1,4 +1,4 @@
-exports.getGames = (_1, res, _2) => {
+const getGames = (_1, res, _2) => {
   res.status(200).json([
     {
       id: "1",
@@ -26,3 +26,5 @@ exports.getGames = (_1, res, _2) => {
     },
   ]);
 };
+
+exports.getGames = getGames;

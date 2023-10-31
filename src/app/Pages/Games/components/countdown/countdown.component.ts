@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -6,11 +5,12 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   standalone: true,
-  imports: [CommonModule],
+  imports: [AsyncPipe],
   selector: 'app-countdown',
   templateUrl: './countdown.component.html',
   styleUrls: ['./countdown.component.css'],

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -11,4 +11,10 @@ import { RouterModule } from '@angular/router';
 })
 export class AppComponent {
   title = 'Math Sprint Game';
+
+  constructor(private router: Router) {}
+
+  redirect() {
+    this.router.navigate(['/auth']);
+  }
 }

@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { GameResult } from '../../../../models/game.model';
+import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
+
+import { GameResult } from '../../../../models/game.model';
 import { GamesService } from '../../../../services/games.service';
-import { CommonModule } from '@angular/common';
 
 @Component({
   standalone: true,
-  imports: [CommonModule],
+  imports: [NgIf],
   selector: 'app-score-modal',
   templateUrl: './score-modal.component.html',
   styleUrls: ['./score-modal.component.css'],

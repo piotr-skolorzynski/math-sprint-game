@@ -1,12 +1,13 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { NgClass, NgFor } from '@angular/common';
 import { Router } from '@angular/router';
+
 import { Game } from 'src/app/models/game.model';
 import { GamesService } from 'src/app/services/games.service';
 
 @Component({
   standalone: true,
-  imports: [CommonModule],
+  imports: [NgFor, NgClass],
   selector: 'app-splash',
   templateUrl: './splash.component.html',
   styleUrls: ['./splash.component.css'],

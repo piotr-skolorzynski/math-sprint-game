@@ -1,1 +1,41 @@
-<h1>Auth component</h1>
+<form class="flex flex-col p-5">
+  <h1 class="text-4xl mb-5">
+    {{ isLogin ? "Log in" : "Create new user" }}
+  </h1>
+
+  <label for="username" class="">Username</label>
+  <input
+    id="username"
+    type="text"
+    name="username"
+    class="border border-1 border-black mb-3 py-1 px-2"
+    required
+  />
+
+  <label for="password">Password</label>
+  <input
+    id="password"
+    type="password"
+    name="password"
+    class="border border-1 border-black mb-3 py-1 px-2"
+    required
+  />
+
+  <p class="text-red-600 mb-3">Please enter all necessary data!</p>
+
+  <div class="self-end space-x-3">
+    <button
+      onClick="{switchAuthHandler}"
+      type="button"
+      class="border border-1 border-black py-1 px-2 hover:bg-green-500 hover:text-white hover:border-green-500 transition-colors"
+    >
+      {{ isLogin ? "Create new user" : "Login" }}
+    </button>
+    <button
+      type="submit"
+      class="border border-1 border-black py-1 px-2 hover:bg-sky-500 hover:text-white hover:border-sky-500 transition-colors"
+    >
+      Save
+    </button>
+  </div>
+</form>

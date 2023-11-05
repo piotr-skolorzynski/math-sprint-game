@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+
+import { AuthService } from './services/auth.service';
 
 @Component({
   standalone: true,
@@ -9,10 +11,15 @@ import { Router, RouterModule } from '@angular/router';
   styleUrls: ['./app.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Math Sprint Game';
+  isLoggedin = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.isLoggedin = this.authService.isLoggedin;
+  }
 
   redirect() {
     this.router.navigate(['/auth']);

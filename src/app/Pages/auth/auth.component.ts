@@ -31,6 +31,21 @@ export class AuthComponent {
   }
 
   onFormSubmit() {
-    console.log(this.authForm);
+    if (this.authForm.valid) {
+      if (this.isSignIn) {
+        const password = localStorage.getItem(this.authForm.value['username']);
+        password === this.authForm.value['password']
+          ? (this.authService.isLoggedin = true)
+          : '';
+
+        return;
+      }
+
+      localStorage.setItem(
+        this.authForm.value['username'],
+        this.authForm.value['password']
+      );
+      this.authService.isLoggedin = true;
+    }
   }
 }

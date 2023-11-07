@@ -1,7 +1,7 @@
 <form
   class="flex flex-col p-5"
   [formGroup]="authForm"
-  (submit)="onFormSubmit()"
+  (ngSubmit)="onFormSubmit()"
 >
   <h1 class="text-4xl mb-5">
     {{ isSignIn ? "Sign in" : "Create new user" }}
@@ -16,6 +16,12 @@
     required
     formControlName="username"
   />
+  <!-- <p
+    *ngIf="!authForm.get('username').valid && authForm.get('username').touched"
+    class="text-red-500 mb-3"
+  >
+    Please enter all necessary data!
+  </p> -->
 
   <label for="password">Password</label>
   <input
@@ -27,9 +33,12 @@
     formControlName="password"
   />
 
-  <p *ngIf="!authForm.valid && authForm.touched" class="text-red-500 mb-3">
+  <!-- <p
+    *ngIf="!authForm.get('password').valid && authForm.get('password').touched"
+    class="text-red-500 mb-3"
+  >
     Please enter all necessary data!
-  </p>
+  </p> -->
 
   <div class="self-end space-x-3">
     <button

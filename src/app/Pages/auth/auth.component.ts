@@ -1,5 +1,4 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { NgIf, NgClass } from '@angular/common';
 import {
   ReactiveFormsModule,
   FormGroup,
@@ -10,8 +9,7 @@ import {
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  standalone: true,
-  imports: [ReactiveFormsModule, NgIf, NgClass],
+  imports: [ReactiveFormsModule],
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css'],

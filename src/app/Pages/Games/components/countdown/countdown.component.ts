@@ -9,12 +9,11 @@ import { AsyncPipe } from '@angular/common';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
-  standalone: true,
-  imports: [AsyncPipe],
-  selector: 'app-countdown',
-  templateUrl: './countdown.component.html',
-  styleUrls: ['./countdown.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [AsyncPipe],
+    selector: 'app-countdown',
+    templateUrl: './countdown.component.html',
+    styleUrls: ['./countdown.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CountdownComponent implements OnInit {
   @Output() close = new EventEmitter<boolean>();

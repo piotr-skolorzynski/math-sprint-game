@@ -9,19 +9,18 @@ import { CountdownComponent } from './components/countdown/countdown.component';
 import { ScoreModalComponent } from './components/score-modal/score-modal.component';
 
 @Component({
-  standalone: true,
-  imports: [
-    CountdownComponent,
-    ScoreModalComponent,
-    NgFor,
-    NgIf,
-    NgFor,
-    NgClass,
-  ],
-  selector: 'app-games',
-  templateUrl: './games.component.html',
-  styleUrls: ['./games.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        CountdownComponent,
+        ScoreModalComponent,
+        NgFor,
+        NgIf,
+        NgFor,
+        NgClass,
+    ],
+    selector: 'app-games',
+    templateUrl: './games.component.html',
+    styleUrls: ['./games.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GamesComponent implements OnInit {
   private equations = [] as Equation[][];

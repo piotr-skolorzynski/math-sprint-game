@@ -4,12 +4,11 @@ import { Router, RouterModule } from '@angular/router';
 import { AuthService } from './services/auth.service';
 
 @Component({
-  standalone: true,
-  imports: [RouterModule],
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [RouterModule],
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
   title = 'Math Sprint Game';

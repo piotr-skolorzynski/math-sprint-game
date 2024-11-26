@@ -6,12 +6,11 @@ import { Game } from 'src/app/models/game.model';
 import { GamesService } from 'src/app/services/games.service';
 
 @Component({
-  standalone: true,
-  imports: [NgFor, NgClass],
-  selector: 'app-splash',
-  templateUrl: './splash.component.html',
-  styleUrls: ['./splash.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [NgFor, NgClass],
+    selector: 'app-splash',
+    templateUrl: './splash.component.html',
+    styleUrls: ['./splash.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SplashComponent implements OnInit {
   games = [] as Game[];

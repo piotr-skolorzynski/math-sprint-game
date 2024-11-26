@@ -32,28 +32,25 @@ export class GamesService {
       bestScore: 10.0,
     },
   ];
-
   private timePlayed = 0;
-
   private interval: number = <any>setInterval(() => {});
-
   private gameResult = {} as GameResult;
 
-  startTimer() {
+  public startTimer(): void {
     this.interval = window.setInterval(() => this.addTime(), 100);
   }
 
-  stopTimer(gameId: string, answers: boolean[]): void {
+  public stopTimer(gameId: string, answers: boolean[]): void {
     clearInterval(this.interval);
 
     this.setGameResult(gameId, answers);
   }
 
-  getGames(): Game[] {
+  public getGames(): Game[] {
     return this.games;
   }
 
-  getGameResults(): GameResult {
+  public getGameResults(): GameResult {
     return this.gameResult;
   }
 

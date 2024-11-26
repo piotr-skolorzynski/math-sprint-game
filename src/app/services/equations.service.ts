@@ -6,7 +6,7 @@ import { Equation } from '../models/game.model';
   providedIn: 'root',
 })
 export class EquationService {
-  createEquastions(questionsAmount: number): Equation[][] {
+  public createEquastions(questionsAmount: number): Equation[][] {
     //randomly choose how many correct equastions there should be
     const correctEquastions = this.getRandomInt(questionsAmount);
 

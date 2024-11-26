@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import {
   ReactiveFormsModule,
   FormGroup,
@@ -16,19 +16,19 @@ import { AuthService } from 'src/app/services/auth.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthComponent {
-  isSignIn = true;
-  authForm: FormGroup = new FormGroup({
+  public isSignIn = true;
+  public authForm: FormGroup = new FormGroup({
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
 
-  constructor(private authService: AuthService) {}
+  private authService = inject(AuthService);
 
-  toggleForm() {
+  public toggleForm(): void {
     this.isSignIn = !this.isSignIn;
   }
 
-  onFormSubmit() {
+  public onFormSubmit(): void {
     if (this.authForm.valid) {
       if (this.isSignIn) {
         const password = localStorage.getItem(this.authForm.value['username']);

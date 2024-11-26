@@ -1,31 +1,31 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
   OnInit,
-  Output,
+  output,
 } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
-    imports: [AsyncPipe],
-    selector: 'app-countdown',
-    templateUrl: './countdown.component.html',
-    styleUrls: ['./countdown.component.css'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  imports: [AsyncPipe],
+  selector: 'app-countdown',
+  templateUrl: './countdown.component.html',
+  styleUrls: ['./countdown.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CountdownComponent implements OnInit {
-  @Output() close = new EventEmitter<boolean>();
+  public close = output<boolean>();
 
   private counterSubject = new BehaviorSubject<number | string>(3);
-  counter$: Observable<number | string> = this.counterSubject.asObservable();
+  public counter$: Observable<number | string> =
+    this.counterSubject.asObservable();
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.countdown();
   }
 
-  countdown(): void {
+  public countdown(): void {
     let counter: number | string = 3;
 
     const interval = setInterval(() => {
@@ -48,7 +48,7 @@ export class CountdownComponent implements OnInit {
     }, 1000);
   }
 
-  closeCounter(): void {
+  public closeCounter(): void {
     this.close.emit(true);
   }
 }

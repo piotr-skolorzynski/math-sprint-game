@@ -1,5 +1,10 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { NgClass, NgFor, NgIf } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnInit,
+} from '@angular/core';
+import { NgClass } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
 import { Equation, Game } from 'src/app/models/game.model';
@@ -9,47 +14,38 @@ import { CountdownComponent } from './components/countdown/countdown.component';
 import { ScoreModalComponent } from './components/score-modal/score-modal.component';
 
 @Component({
-    imports: [
-        CountdownComponent,
-        ScoreModalComponent,
-        NgFor,
-        NgIf,
-        NgFor,
-        NgClass,
-    ],
-    selector: 'app-games',
-    templateUrl: './games.component.html',
-    styleUrls: ['./games.component.css'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  imports: [CountdownComponent, NgClass, ScoreModalComponent],
+  selector: 'app-games',
+  templateUrl: './games.component.html',
+  styleUrls: ['./games.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GamesComponent implements OnInit {
+  public isGameStarting = true;
+  public selectedEquation = {} as Equation;
+  public selectedEquationArray = [] as Equation[];
+  public selectedEquationArrayIndex: number = 0;
+  public showScoreModal = false;
+
   private equations = [] as Equation[][];
   private selectedEquationIndex = 0;
   private answers = [] as boolean[];
   private gameId = '';
   private selectedGame = {} as Game;
-  isGameStarting = true;
-  selectedEquation = {} as Equation;
-  selectedEquationArray = [] as Equation[];
-  selectedEquationArrayIndex: number = 0;
-  showScoreModal = false;
+  private route = inject(ActivatedRoute);
+  private gameService = inject(GamesService);
+  private questionsService = inject(EquationService);
 
-  constructor(
-    private route: ActivatedRoute,
-    private gameService: GamesService,
-    private questionsService: EquationService
-  ) {}
-
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.startGame();
   }
 
-  onClose(close: boolean) {
+  public onClose(close: boolean): void {
     this.isGameStarting = !close;
     this.gameService.startTimer();
   }
 
-  onWrongCheck() {
+  public onWrongCheck() {
     if (this.selectedEquation.isTrue) {
       this.answers = [...this.answers, false];
     } else {
@@ -59,7 +55,7 @@ export class GamesComponent implements OnInit {
     this.changeIndex();
   }
 
-  onRightCheck() {
+  public onRightCheck(): void {
     if (this.selectedEquation.isTrue) {
       this.answers = [...this.answers, true];
     } else {
@@ -69,7 +65,7 @@ export class GamesComponent implements OnInit {
     this.changeIndex();
   }
 
-  private startGame() {
+  private startGame(): void {
     this.gameId = this.route.snapshot.params['gameId'];
     const games = this.gameService.getGames();
     const chosenGame = games.find((game) => game.id === this.gameId);
@@ -85,7 +81,7 @@ export class GamesComponent implements OnInit {
     }
   }
 
-  private changeIndex() {
+  private changeIndex(): void {
     if (
       this.selectedEquationIndex === this.selectedEquationArray.length - 1 &&
       this.selectedEquationArrayIndex === this.equations.length - 1
@@ -117,7 +113,7 @@ export class GamesComponent implements OnInit {
     };
   }
 
-  private sumupGame() {
+  private sumupGame(): void {
     this.gameService.stopTimer(this.gameId, this.answers);
     this.showScoreModal = true;
   }

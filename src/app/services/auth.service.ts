@@ -4,6 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AuthService {
-  isLoggedin = false;
-  user = '';
+  public isLoggedin = false;
+  public user = '';
 }

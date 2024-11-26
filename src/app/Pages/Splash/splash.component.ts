@@ -1,32 +1,38 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { NgClass, NgFor } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnInit,
+} from '@angular/core';
+import { NgClass } from '@angular/common';
 import { Router } from '@angular/router';
 
 import { Game } from 'src/app/models/game.model';
 import { GamesService } from 'src/app/services/games.service';
 
 @Component({
-    imports: [NgFor, NgClass],
-    selector: 'app-splash',
-    templateUrl: './splash.component.html',
-    styleUrls: ['./splash.component.css'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  imports: [NgClass],
+  selector: 'app-splash',
+  templateUrl: './splash.component.html',
+  styleUrls: ['./splash.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SplashComponent implements OnInit {
-  games = [] as Game[];
-  selectedGame = {} as Game;
+  public games = [] as Game[];
+  public selectedGame = {} as Game;
 
-  constructor(private router: Router, private gameService: GamesService) {}
+  private router = inject(Router);
+  private gameService = inject(GamesService);
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.games = this.gameService.getGames();
   }
 
-  onGameSelect(game: Game) {
+  public onGameSelect(game: Game): void {
     this.selectedGame = { ...game };
   }
 
-  onGameStart() {
+  public onGameStart(): void {
     this.router.navigate([`/games/${this.selectedGame.id}`]);
   }
 }

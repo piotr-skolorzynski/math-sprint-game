@@ -1,26 +1,32 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnInit,
+} from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 
 import { AuthService } from './services/auth.service';
 
 @Component({
-    imports: [RouterModule],
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  imports: [RouterModule],
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
-  title = 'Math Sprint Game';
-  isLoggedin = false;
+  public title = 'Math Sprint Game';
+  public isLoggedin = false;
 
-  constructor(private router: Router, private authService: AuthService) {}
+  private router = inject(Router);
+  private authService = inject(AuthService);
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.isLoggedin = this.authService.isLoggedin;
   }
 
-  redirect() {
+  public redirect() {
     this.router.navigate(['/auth']);
   }
 }

@@ -7,7 +7,7 @@ import {
 import { NgClass } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
-import { Equation, Game } from 'src/app/models/game.model';
+import { IEquation, IGame } from 'src/app/models/game.model';
 import { EquationService } from 'src/app/services/equations.service';
 import { GamesService } from 'src/app/services/games.service';
 import { CountdownComponent } from './components/countdown/countdown.component';
@@ -22,16 +22,16 @@ import { ScoreModalComponent } from './components/score-modal/score-modal.compon
 })
 export class GamesComponent implements OnInit {
   public isGameStarting = true;
-  public selectedEquation = {} as Equation;
-  public selectedEquationArray = [] as Equation[];
+  public selectedEquation = {} as IEquation;
+  public selectedEquationArray = [] as IEquation[];
   public selectedEquationArrayIndex: number = 0;
   public showScoreModal = false;
 
-  private equations = [] as Equation[][];
+  private equations = [] as IEquation[][];
   private selectedEquationIndex = 0;
   private answers = [] as boolean[];
   private gameId = '';
-  private selectedGame = {} as Game;
+  private selectedGame = {} as IGame;
   private route = inject(ActivatedRoute);
   private gameService = inject(GamesService);
   private questionsService = inject(EquationService);
@@ -68,7 +68,7 @@ export class GamesComponent implements OnInit {
   private startGame(): void {
     this.gameId = this.route.snapshot.params['gameId'];
     const games = this.gameService.getGames();
-    const chosenGame = games.find((game) => game.id === this.gameId);
+    const chosenGame = games.find(game => game.id === this.gameId);
 
     if (chosenGame) {
       this.selectedGame = chosenGame;

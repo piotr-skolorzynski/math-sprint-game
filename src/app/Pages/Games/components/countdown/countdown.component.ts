@@ -3,12 +3,10 @@ import {
   Component,
   OnInit,
   output,
+  signal,
 } from '@angular/core';
-import { AsyncPipe } from '@angular/common';
-import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
-  imports: [AsyncPipe],
   selector: 'app-countdown',
   templateUrl: './countdown.component.html',
   styleUrls: ['./countdown.component.css'],
@@ -17,9 +15,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class CountdownComponent implements OnInit {
   public close = output<boolean>();
 
-  private counterSubject = new BehaviorSubject<number | string>(3);
-  public counter$: Observable<number | string> =
-    this.counterSubject.asObservable();
+  public counter = signal<number | string>(3);
 
   public ngOnInit(): void {
     this.countdown();
@@ -31,14 +27,14 @@ export class CountdownComponent implements OnInit {
     const interval = setInterval(() => {
       if (typeof counter === 'number' && counter > 1) {
         counter -= 1;
-        this.counterSubject.next(counter);
+        this.counter.set(counter);
 
         return;
       }
 
       if (typeof counter === 'number') {
         counter = 'Go!';
-        this.counterSubject.next(counter);
+        this.counter.set(counter);
 
         return;
       }

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 
-import { Game, GameResult } from '../models/game.model';
+import { IGame, IGameResult } from '../models/game.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GamesService {
-  private games: Game[] = [
+  private games: IGame[] = [
     {
       id: '1',
       title: '10 Questions',
@@ -34,7 +34,7 @@ export class GamesService {
   ];
   private timePlayed = 0;
   private interval: number = <any>setInterval(() => {});
-  private gameResult = {} as GameResult;
+  private gameResult = {} as IGameResult;
 
   public startTimer(): void {
     this.interval = window.setInterval(() => this.addTime(), 100);
@@ -46,19 +46,19 @@ export class GamesService {
     this.setGameResult(gameId, answers);
   }
 
-  public getGames(): Game[] {
+  public getGames(): IGame[] {
     return this.games;
   }
 
-  public getGameResults(): GameResult {
+  public getGameResults(): IGameResult {
     return this.gameResult;
   }
 
   private setGameResult(gameId: string, answers: boolean[]): void {
     const hasIncorrectAnswers =
-      answers.filter((answer) => answer === false).length > 0;
+      answers.filter(answer => answer === false).length > 0;
 
-    const playedGame = this.games.find((game) => game.id === gameId) as Game;
+    const playedGame = this.games.find(game => game.id === gameId) as IGame;
 
     const baseTime = playedGame.bestScore;
 

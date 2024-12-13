@@ -6,4 +6,4 @@ import { AppRoutingModule } from './app/app-routing.module';
 
 bootstrapApplication(AppComponent, {
   providers: [importProvidersFrom(AppRoutingModule)],
-}).catch((err) => console.error(err));
+}).catch(err => console.error(err));

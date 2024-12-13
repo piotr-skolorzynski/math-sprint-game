@@ -1,30 +1,31 @@
 @if (!isGameStarting) {
-<div class="flex flex-col justify-center items-center space-y-6 py-12">
-  @for (equation of selectedEquationArray; track equation.id) {
-  <div
-    class="w-full text-4xl text-center py-3"
-    [ngClass]="{ 'bg-sky-400': equation.id === selectedEquation.id }"
-  >
-    {{ equation.value }}
+  <div class="flex flex-col justify-center items-center space-y-6 py-12">
+    @for (equation of selectedEquationArray; track equation.id) {
+      <div
+        class="w-full text-4xl text-center py-3"
+        [ngClass]="{ 'bg-sky-400': equation.id === selectedEquation.id }">
+        {{ equation.value }}
+      </div>
+    }
   </div>
-  }
-</div>
-<div class="w-full py-6 flex justify-center items-center bg-black space-x-5">
-  <button
-    class="text-white bg-red-700 py-3 px-6 rounded-md text-3xl w-[250px]"
-    (click)="onWrongCheck()"
-  >
-    Wrong
-  </button>
-  <button
-    class="text-white bg-green-500 py-3 px-6 rounded-md text-3xl w-[250px]"
-    (click)="onRightCheck()"
-  >
-    Right
-  </button>
-</div>
+
+  <div class="w-full py-6 flex justify-center items-center bg-black space-x-5">
+    <button
+      class="text-white bg-red-700 py-3 px-6 rounded-md text-3xl w-[250px]"
+      (click)="onWrongCheck()">
+      Wrong
+    </button>
+
+    <button
+      class="text-white bg-green-500 py-3 px-6 rounded-md text-3xl w-[250px]"
+      (click)="onRightCheck()">
+      Right
+    </button>
+  </div>
 } @else {
-<app-countdown (close)="onClose($event)" />
-} @if (showScoreModal && !isGameStarting) {
-<app-score-modal />
+  <app-countdown (close)="onClose($event)" />
+}
+
+@if (showScoreModal && !isGameStarting) {
+  <app-score-modal />
 }

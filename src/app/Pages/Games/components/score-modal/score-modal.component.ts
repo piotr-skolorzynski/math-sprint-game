@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { GameResult } from '../../../../models/game.model';
+import { IGameResult } from '../../../../models/game.model';
 import { GamesService } from '../../../../services/games.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { GamesService } from '../../../../services/games.service';
   styleUrls: ['./score-modal.component.css'],
 })
 export class ScoreModalComponent implements OnInit {
-  public gameResult = {} as GameResult;
+  public gameResult = {} as IGameResult;
   private router = inject(Router);
   private gameService = inject(GamesService);
 

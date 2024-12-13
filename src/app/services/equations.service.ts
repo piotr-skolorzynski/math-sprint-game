@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 
-import { Equation } from '../models/game.model';
+import { IEquation } from '../models/game.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EquationService {
-  public createEquastions(questionsAmount: number): Equation[][] {
+  public createEquastions(questionsAmount: number): IEquation[][] {
     //randomly choose how many correct equastions there should be
     const correctEquastions = this.getRandomInt(questionsAmount);
 
     //set amount of wrong equations
     const incorrectEquastions = questionsAmount - correctEquastions;
 
-    let equations = [] as Equation[];
+    let equations = [] as IEquation[];
     let firstNumber: number;
     let secondNumber: number;
     let wrongFormat = [] as string[];
@@ -60,11 +60,11 @@ export class EquationService {
     return ArrayOfArrays;
   }
 
-  private createArrayOfArrays(array: Equation[]): Equation[][] {
+  private createArrayOfArrays(array: IEquation[]): IEquation[][] {
     const NUMBER_OF_QUESTIONS = 5;
     const numberOfArrays = Math.ceil(array.length / NUMBER_OF_QUESTIONS);
 
-    const arrayOfArrays = [] as Equation[][];
+    const arrayOfArrays = [] as IEquation[][];
 
     for (let i = 0; i < numberOfArrays; i++) {
       const partialArray = array.slice(

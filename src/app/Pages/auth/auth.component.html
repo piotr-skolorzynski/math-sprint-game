@@ -1,10 +1,9 @@
 <form
   class="flex flex-col p-5"
   [formGroup]="authForm"
-  (ngSubmit)="onFormSubmit()"
->
+  (ngSubmit)="onFormSubmit()">
   <h1 class="text-4xl mb-5">
-    {{ isSignIn ? "Sign in" : "Create new user" }}
+    {{ isSignIn ? 'Sign in' : 'Create new user' }}
   </h1>
 
   <label for="username" class="">Username</label>
@@ -14,8 +13,8 @@
     name="username"
     class="border border-1 border-black mb-3 py-1 px-2"
     required
-    formControlName="username"
-  />
+    formControlName="username" />
+
   <!-- <p
     *ngIf="!authForm.get('username').valid && authForm.get('username').touched"
     class="text-red-500 mb-3"
@@ -30,8 +29,7 @@
     name="password"
     class="border border-1 border-black mb-3 py-1 px-2"
     required
-    formControlName="password"
-  />
+    formControlName="password" />
 
   <!-- <p
     *ngIf="!authForm.get('password').valid && authForm.get('password').touched"
@@ -44,14 +42,13 @@
     <button
       (click)="toggleForm()"
       type="button"
-      class="border border-1 border-black py-1 px-2 hover:bg-green-500 hover:text-white hover:border-green-500 transition-colors"
-    >
-      {{ isSignIn ? "Create new user" : "Sign in" }}
+      class="border border-1 border-black py-1 px-2 hover:bg-green-500 hover:text-white hover:border-green-500 transition-colors">
+      {{ isSignIn ? 'Create new user' : 'Sign in' }}
     </button>
+
     <button
       type="submit"
-      class="border border-1 border-black py-1 px-2 hover:bg-sky-500 hover:text-white hover:border-sky-500 transition-colors"
-    >
+      class="border border-1 border-black py-1 px-2 hover:bg-sky-500 hover:text-white hover:border-sky-500 transition-colors">
       Save
     </button>
   </div>

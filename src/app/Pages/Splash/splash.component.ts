@@ -7,7 +7,7 @@ import {
 import { NgClass } from '@angular/common';
 import { Router } from '@angular/router';
 
-import { Game } from 'src/app/models/game.model';
+import { IGame } from 'src/app/models/game.model';
 import { GamesService } from 'src/app/services/games.service';
 
 @Component({
@@ -18,8 +18,8 @@ import { GamesService } from 'src/app/services/games.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SplashComponent implements OnInit {
-  public games = [] as Game[];
-  public selectedGame = {} as Game;
+  public games = [] as IGame[];
+  public selectedGame = {} as IGame;
 
   private router = inject(Router);
   private gameService = inject(GamesService);
@@ -28,7 +28,7 @@ export class SplashComponent implements OnInit {
     this.games = this.gameService.getGames();
   }
 
-  public onGameSelect(game: Game): void {
+  public onGameSelect(game: IGame): void {
     this.selectedGame = { ...game };
   }
 

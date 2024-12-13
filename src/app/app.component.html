@@ -1,14 +1,12 @@
 <div class="max-w-screen-sm mx-auto mt-10">
   <div class="font-mono border-2 border-black shadow-2xl">
     <div
-      class="w-full p-10 flex flex-col justify-center items-center bg-sky-500"
-    >
+      class="w-full p-10 flex flex-col justify-center items-center bg-sky-500">
       <button
         type="button"
         class="self-end border bg-green-500 border-green-500 shadow-2xl py-1 px-2 text-center text-white font-semibold mb-2 hover:bg-green-600 hover:border-green-600 transition-colors"
-        (click)="redirect()"
-      >
-        {{ isLoggedin ? "Sign out" : "Sign in" }}
+        (click)="redirect()">
+        {{ isLoggedin ? 'Sign out' : 'Sign in' }}
       </button>
       <p class="capitalize text-white text-6xl font-bold">
         {{ title }}

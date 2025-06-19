@@ -9,7 +9,6 @@ import {
 @Component({
   selector: 'app-countdown',
   templateUrl: './countdown.component.html',
-  styleUrls: ['./countdown.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CountdownComponent implements OnInit {

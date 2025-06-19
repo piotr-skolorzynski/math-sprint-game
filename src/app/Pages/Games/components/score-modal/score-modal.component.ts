@@ -7,7 +7,6 @@ import { GamesService } from '../../../../services/games.service';
 @Component({
   selector: 'app-score-modal',
   templateUrl: './score-modal.component.html',
-  styleUrls: ['./score-modal.component.css'],
 })
 export class ScoreModalComponent implements OnInit {
   public gameResult = {} as IGameResult;

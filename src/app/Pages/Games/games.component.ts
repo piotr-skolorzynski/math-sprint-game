@@ -14,10 +14,9 @@ import { CountdownComponent } from './components/countdown/countdown.component';
 import { ScoreModalComponent } from './components/score-modal/score-modal.component';
 
 @Component({
-  imports: [CountdownComponent, NgClass, ScoreModalComponent],
   selector: 'app-games',
   templateUrl: './games.component.html',
-  styleUrls: ['./games.component.css'],
+  imports: [CountdownComponent, NgClass, ScoreModalComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GamesComponent implements OnInit {
@@ -45,7 +44,7 @@ export class GamesComponent implements OnInit {
     this.gameService.startTimer();
   }
 
-  public onWrongCheck() {
+  public onWrongCheck(): void {
     if (this.selectedEquation.isTrue) {
       this.answers = [...this.answers, false];
     } else {

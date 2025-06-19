@@ -9,10 +9,10 @@ import {
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  imports: [ReactiveFormsModule],
   selector: 'app-auth',
   templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.css'],
+  styleUrl: './auth.component.css',
+  imports: [ReactiveFormsModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthComponent {

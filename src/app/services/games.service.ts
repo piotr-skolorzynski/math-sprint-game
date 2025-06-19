@@ -74,7 +74,7 @@ export class GamesService {
     console.log(this.gameResult);
   }
 
-  private addTime() {
+  private addTime(): void {
     this.timePlayed += 0.1;
   }
 }

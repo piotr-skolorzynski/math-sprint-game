@@ -9,10 +9,9 @@ import { Router, RouterModule } from '@angular/router';
 import { AuthService } from './services/auth.service';
 
 @Component({
-  imports: [RouterModule],
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  imports: [RouterModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
@@ -26,7 +25,7 @@ export class AppComponent implements OnInit {
     this.isLoggedin = this.authService.isLoggedin;
   }
 
-  public redirect() {
+  public redirect(): void {
     this.router.navigate(['/auth']);
   }
 }

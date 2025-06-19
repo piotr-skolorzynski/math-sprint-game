@@ -11,10 +11,9 @@ import { IGame } from 'src/app/models/game.model';
 import { GamesService } from 'src/app/services/games.service';
 
 @Component({
-  imports: [NgClass],
   selector: 'app-splash',
   templateUrl: './splash.component.html',
-  styleUrls: ['./splash.component.css'],
+  imports: [NgClass],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SplashComponent implements OnInit {

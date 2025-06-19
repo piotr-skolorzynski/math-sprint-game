@@ -1,8 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { IGameResult } from '../../../../models/game.model';
-import { GamesService } from '../../../../services/games.service';
+import { IGameResult } from '@app/models';
+import { GamesService } from '@app/services/games.service';
 
 @Component({
   selector: 'app-score-modal',

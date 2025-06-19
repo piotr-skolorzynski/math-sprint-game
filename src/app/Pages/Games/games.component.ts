@@ -7,11 +7,9 @@ import {
 import { NgClass } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
-import { IEquation, IGame } from 'src/app/models/game.model';
-import { EquationService } from 'src/app/services/equations.service';
-import { GamesService } from 'src/app/services/games.service';
-import { CountdownComponent } from './components/countdown/countdown.component';
-import { ScoreModalComponent } from './components/score-modal/score-modal.component';
+import { CountdownComponent, ScoreModalComponent } from '@app/components';
+import { IEquation, IGame } from '@app/models';
+import { EquationService, GamesService } from '@app/services';
 
 @Component({
   selector: 'app-games',

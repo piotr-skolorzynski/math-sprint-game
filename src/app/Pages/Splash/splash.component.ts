@@ -7,8 +7,8 @@ import {
 import { NgClass } from '@angular/common';
 import { Router } from '@angular/router';
 
-import { IGame } from 'src/app/models/game.model';
-import { GamesService } from 'src/app/services/games.service';
+import { IGame } from '@app/models';
+import { GamesService } from '@app/services';
 
 @Component({
   selector: 'app-splash',

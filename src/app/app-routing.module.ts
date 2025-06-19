@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 
-import { SplashComponent } from './pages/splash/splash.component';
-import { GamesComponent } from './pages/games/games.component';
-import { AuthComponent } from './pages/auth/auth.component';
+import { AuthComponent, GamesComponent, SplashComponent } from './pages';
 
 const routes: Route[] = [
   { path: '', component: SplashComponent },

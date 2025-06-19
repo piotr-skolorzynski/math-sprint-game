@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { IEquation } from '../models/game.model';
+import { IEquation } from '@app/models';
 
 @Injectable({
   providedIn: 'root',

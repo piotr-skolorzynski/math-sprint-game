@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '@app/services';
 
 @Component({
   selector: 'app-auth',
